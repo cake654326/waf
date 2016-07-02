@@ -56,6 +56,25 @@ function white_url_check()
     end
 end
 
+--ngx.var.server_name
+function white_servername_check()
+    if config_white_url_check == "on" then
+        local URL_WHITE_SERVER = get_rule('writeserver.rule')
+        local REQ_SER = ngx.var.server_name
+        if URL_WHITE_SERVER ~= nil then
+            for _,rule in pairs(URL_WHITE_SERVER) do
+                --log_record('for:',rule,"_","_")
+                if rule ~= "" and rulematch(REQ_SER,rule,"jo") then
+                    --ngx.say( URL_WHITE_SERVER);
+                    --log_record('checkok',URL_WHITE_SERVER,"_","_")
+                    return true 
+                end
+            end
+        end
+    end
+end
+
+
 --deny cc attack
 function cc_attack_check()
     if config_cc_check == "on" then
