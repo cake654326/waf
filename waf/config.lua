@@ -45,7 +45,7 @@
  config_cc_check = "on"  
 --  #是否开启防cc攻击
  --cc rate the xxx of xxx seconds 
- config_cc_rate = "200/60"   
+ config_cc_rate = "100/60"   
 --  #允许一个ip60秒内只能访问200此
 
  --enable/disable post filtering 
